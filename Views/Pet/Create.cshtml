@@ -1,5 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+@model KurthProject2Vet.Models.Pet
 @{
+    Layout = "_Layout";
+    ViewBag.Title = "Add New Pet";
 }
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label asp-for="Name">Name:</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BirthDate">Birth Date:</label>
+                    <input type="datetime" asp-for="BirthDate" class="form-control" />
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type">What type of animal is this?(cat, dog, bird):</label>
+                    <input asp-for="Type" class="form-control" />
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Owner">Store Name:</label>
+                    <select asp-for="Owner" class="form-control">
+                        <span asp-validation-for="Owner" class="text-danger"></span>
+                        @foreach (var owner in ViewBag.AvailableOwners)
+                        {
+                    <option value="@owner.OwnerId">@owner.FirstName @owner.LastName</option>
+                        }
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn btn-info">Add Item</button>
+            </form>
+        </div>
+    </div>
+</div>
+
