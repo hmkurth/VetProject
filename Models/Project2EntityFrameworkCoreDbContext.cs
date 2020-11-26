@@ -14,9 +14,9 @@ namespace KurthProject2Vet.Models
         DbSet<Owner> Owners { get; set; }
         DbSet<Pet> Pets { get; set; }
 
-        public void AddGroceryItem(GroceryItem groceryItem)
+        public void AddOwner(Owner owner)
         {
-            GroceryItems.Add(groceryItem);
+            Owner.Add(owner);
             SaveChanges();
            
         }

@@ -31,15 +31,24 @@ namespace KurthProject2Vet.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Owner owner)
+        public IActionResult Create(Pet pet)
         {
             if (ModelState.IsValid == true)
             {
                 //insert owner into dtabase
-                _repository.AddOwner(owner);
+                _repository.AddPet(pet);
                 return RedirectToAction("Index");
             }
-            return View(owner);
+            return View(pet);
+        }
+        [HttpGet]
+        //PetServices	(HttpGet)	to	display	the	pets	and	all	of	the	services	
+       // they have    used
+        public IActionResult PetServices()
+        {
+            List<PetService> petServices = _repository.GetAllPetServices();
+
+            return View(petServices);
         }
     }
 }
