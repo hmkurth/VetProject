@@ -79,6 +79,25 @@ namespace KurthProject2Vet.Database
 
         public void AddPet(Pet pet)
         {
+
+            MySqlConnection connection;
+            MySqlCommand sqlCommand;
+
+            connection = GetConnection();
+            connection.Open();
+
+            sqlCommand = new MySqlCommand();
+            sqlCommand.Connection = connection;
+            sqlCommand.CommandText = "INSERT INTO STORE VALUES (NULL, @FirstName, @LastName, @PhoneNumber @Pets )";
+            sqlCommand.Parameters.AddWithValue("@Name", pet.Name);
+            sqlCommand.Parameters.AddWithValue("@LastName", pet.LastName);
+            sqlCommand.Parameters.AddWithValue("@PhoneNumber", pet.PhoneNumber);
+            sqlCommand.Parameters.AddWithValue("@Pets", owner.Pets);
+
+            sqlCommand.ExecuteNonQuery();
+
+            connection.Close();
+            throw new NotImplementedException();
             throw new NotImplementedException();
         }
 
