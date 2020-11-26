@@ -13,7 +13,7 @@ specifically	the	pet	name	and	type (see	image	below)
     <div class="row">
         @foreach (var owner in @Model)
         {
-            <div class="col-sm-3">@owner.FirstName @owner.LastName from Store: @owner.Pets.Name </div>
+            <div class="col-sm-3">@owner.FirstName @owner.LastName from Store: @owner.Pets </div>
         }
     </div>
 </div>
