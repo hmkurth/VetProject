@@ -21,30 +21,15 @@ namespace KurthProject2Vet.Models
            
         }
 
-        public void AddOwner(Owner owner)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public void AddPet(Pet pet)
         {
-            throw new NotImplementedException();
-        }
-
-        public void AddStore(Store store)
-        {
-            Stores.Add(store);
+            Pets.Add(pet);
             SaveChanges();
-            
-        }
-
-        public List<GroceryItem> GetAllGroceryItems()
-        {
-            return GroceryItems
-                .Include(groceryItem => groceryItem.Store)
-                .ToList();
             throw new NotImplementedException();
         }
+
+
 
         public List<Owner> GetAllOwners()
         {
@@ -56,9 +41,8 @@ namespace KurthProject2Vet.Models
             throw new NotImplementedException();
         }
 
-        public List<Store> GetAllStores()
+        public List<PetService> GetAllPetServices()
         {
-            return Stores.ToList();
             throw new NotImplementedException();
         }
     }
