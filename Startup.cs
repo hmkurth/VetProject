@@ -2,19 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KurthGroceryList.Models;
+using KurthProject2Vet.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KurthProject2Vet
-{
+{ 
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(Microsoft.Extensions.Configuration.IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -24,12 +27,9 @@ namespace KurthProject2Vet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            services.AddDbContext<Project2EntityFrameworkCoreDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("Project2EntityFrameworkCoreLocalConnection")));
+            services.AddScoped<IProject2Repository, Project2EntityFrameworkCoreDbContext>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
