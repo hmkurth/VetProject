@@ -110,5 +110,12 @@ namespace KurthProject2Vet.Database
         {
             throw new NotImplementedException();
         }
+
+        
+
+        List<Owner> IProject2Repository.GetAllOwners()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

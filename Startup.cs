@@ -27,8 +27,9 @@ namespace KurthProject2Vet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<Project2EntityFrameworkCoreDbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("Project2EntityFrameworkCoreLocalConnection")));
+                options => options.UseSqlServer(Configuration.GetConnectionString("Project2VetEntityFrameworkCoreLocalConnection")));
             services.AddScoped<IProject2Repository, Project2EntityFrameworkCoreDbContext>();
 
 
@@ -52,7 +53,12 @@ namespace KurthProject2Vet
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

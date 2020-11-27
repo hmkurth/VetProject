@@ -16,12 +16,11 @@ namespace KurthProject2Vet.Models
 
         public void AddOwner(Owner owner)
         {
-            Owner.Add(owner);
+            Owners.Add(owner);
             SaveChanges();
            
         }
 
-       
         public void AddPet(Pet pet)
         {
             Pets.Add(pet);
