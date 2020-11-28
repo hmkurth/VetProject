@@ -1,0 +1,28 @@
+﻿@model ViewModel
+@addTagHelper*,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Owner";
+}
+//The	owners	listing	should	show	a	list	of	Pets	that	each	owner	owns,
+specifically	the	pet	name	and	type (see	image	below)
+
+<h3>Pet Owners </h3>
+<a class="btn btn-large btn-success" asp-controller="Owners" asp-action="Create">Add a new pet owner</a>
+<div class="container">
+    <div class="row">
+        @foreach (var owner in @Model)
+        {
+            <p>@owner.LastName, @owner.FirstName</p>
+            <ul>
+                @foreach (var pet in owner.Pets)//nav property
+                {
+                    <li>@pet.Owners.Name @pet.Type : @pet.Type</li>
+                }
+            </ul>
+        }
+
+    </div>
+</div>
+
+

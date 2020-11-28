@@ -11,10 +11,7 @@ namespace KurthProject2Vet.Models
     {
         public Project2EntityFrameworkCoreDbContext(DbContextOptions<Project2EntityFrameworkCoreDbContext> options)
             :base(options) { }
-        DbSet<Owner> Owners { get; set; }
-        DbSet<Pet> Pets { get; set; }
-        DbSet<Service> Services { get; set; }
-        DbSet<PetService> PetServices { get; set; }
+      
 
         public void AddOwner(Owner owner)
         {
@@ -65,7 +62,11 @@ namespace KurthProject2Vet.Models
                 .HasOne(e => e.Service)
                 .WithMany(s => s.PetServices)
                 .HasForeignKey(e => e.ServiceId);
-        }    
-
+        }
+        DbSet<Owner> Owners { get; set; }
+        DbSet<Pet> Pets { get; set; }
+        DbSet<Service> Services { get; set; }
+        DbSet<PetService> PetServices { get; set; }
     }
+
 }

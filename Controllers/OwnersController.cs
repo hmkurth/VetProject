@@ -19,7 +19,7 @@ namespace KurthProject2Vet.Controllers
             _repository = repository;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+      /*  public async Task<IActionResult> Index()
         {
             //return View(await _context.Owner
               //  .Include(owner => owner.Pets)
@@ -27,6 +27,12 @@ namespace KurthProject2Vet.Controllers
 
             List<Owner> owners = _repository.GetAllOwners();
             
+            return View(owners);
+        }  */
+        [HttpGet]
+        public IActionResult Index()
+        {
+            List<Owner> owners = _repository.GetAllOwners();
             return View(owners);
         }
         [HttpGet]
