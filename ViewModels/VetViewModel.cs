@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KurthProject2Vet.ViewModel
+namespace KurthProject2Vet.ViewModels
 {
-    public class ViewModel
+    public class VetViewModel
     {
         public List<Owner> Owners { get; set; }
         public List<Pet> Pets { get; set; }

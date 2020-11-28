@@ -1,9 +1,6 @@
 ﻿using KurthProject2Vet.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace KurthProject2Vet.Controllers
 {
@@ -32,6 +29,7 @@ namespace KurthProject2Vet.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            VetViewModels viewModels = new VetViewModels();
             List<Owner> owners = _repository.GetAllOwners();
             return View(owners);
         }
