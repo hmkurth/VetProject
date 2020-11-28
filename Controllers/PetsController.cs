@@ -19,6 +19,7 @@ namespace KurthProject2Vet.Controllers
         {
             _repository = repository;
         }
+        [HttpGet]
         public IActionResult Index()
         {
             List<Pet> pets = _repository.GetAllPets();

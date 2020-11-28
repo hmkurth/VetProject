@@ -44,7 +44,7 @@ namespace KurthProject2Vet.Database
                 owner.OwnerId = dataReader.GetInt32("OwnerId");
                 owner.FirstName = dataReader.GetString("FirstName");
                 owner.LastName = dataReader.GetString("LastName");
-              //  owner.Pets = dataReader.GetString("Pets");
+                //  owner.Pets = dataReader.GetString("Pets");
                 owner.PhoneNumber = dataReader.GetInt32("PhoneNumber");
 
                 owners.Add(owner);
@@ -70,7 +70,7 @@ namespace KurthProject2Vet.Database
             sqlCommand.Parameters.AddWithValue("@LastName", owner.LastName);
             sqlCommand.Parameters.AddWithValue("@PhoneNumber", owner.PhoneNumber);
             sqlCommand.Parameters.AddWithValue("@Pets", owner.Pets);
-            
+
             sqlCommand.ExecuteNonQuery();
 
             connection.Close();
@@ -91,8 +91,8 @@ namespace KurthProject2Vet.Database
             sqlCommand.CommandText = "INSERT INTO STORE VALUES (NULL, @FirstName, @LastName, @PhoneNumber @Pets )";
             //sqlCommand.Parameters.AddWithValue("@Name", pet.Name);
             //sqlCommand.Parameters.AddWithValue("@LastName", pet.LastName);
-           // sqlCommand.Parameters.AddWithValue("@PhoneNumber", pet.PhoneNumber);
-          //  sqlCommand.Parameters.AddWithValue("@Pets", owner.Pets);
+            // sqlCommand.Parameters.AddWithValue("@PhoneNumber", pet.PhoneNumber);
+            //  sqlCommand.Parameters.AddWithValue("@Pets", owner.Pets);
 
             sqlCommand.ExecuteNonQuery();
 
@@ -103,6 +103,7 @@ namespace KurthProject2Vet.Database
 
         public List<Pet> GetAllPets()
         {
+            return
             throw new NotImplementedException();
         }
 
@@ -111,11 +112,5 @@ namespace KurthProject2Vet.Database
             throw new NotImplementedException();
         }
 
-        
-
-        List<Owner> IProject2Repository.GetAllOwners()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
