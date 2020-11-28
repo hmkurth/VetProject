@@ -29,6 +29,7 @@ namespace KurthProject2Vet.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.AvailableOwners = _repository.GetAllOwners();
             return View();
         }
         [HttpPost]

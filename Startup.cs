@@ -57,7 +57,7 @@ namespace KurthProject2Vet
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=HomeController}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

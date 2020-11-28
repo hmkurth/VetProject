@@ -21,17 +21,18 @@ namespace KurthProject2Vet.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Owner
-                .Include(owner => owner.Pets)
-                .ToListAsync());
+            //return View(await _context.Owner
+              //  .Include(owner => owner.Pets)
+              //  .ToListAsync());
 
-            //List<Owner> owners = _repository.GetAllOwners();
+            List<Owner> owners = _repository.GetAllOwners();
             
-           // return View(owners);
+            return View(owners);
         }
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.AvailablePets = _repository.GetAllPets();
             return View();
         }
         [HttpPost]
@@ -43,7 +44,7 @@ namespace KurthProject2Vet.Controllers
                 _repository.AddOwner(owner);
                 return RedirectToAction("Index");
             }
-            return View(owner);
+            return View(owner);// return to create ???
         }
     }
 }
