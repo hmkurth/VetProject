@@ -43,11 +43,11 @@ namespace KurthProject2Vet.Controllers
             return View(pet);
         }
         [HttpGet]
-        //PetServices	(HttpGet)	to	display	the	pets	and	all	of	the	services	
+        //PetServices	(HttpGet)	to	display	the	pets and	all	of	the	services	
        // they have    used
         public IActionResult PetServices()
         {
-            List<PetService> petServices = _repository.GetAllPetServices();
+            List<Pet> petServices = _repository.GetAllPetServices();
 
             return View(petServices);
         }

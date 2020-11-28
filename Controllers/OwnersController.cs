@@ -18,11 +18,16 @@ namespace KurthProject2Vet.Controllers
         {
             _repository = repository;
         }
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            List<Owner> owners = _repository.GetAllOwners();
+            return View(await _context.Owner
+                .Include(owner => owner.Pets)
+                .ToListAsync());
+
+            //List<Owner> owners = _repository.GetAllOwners();
             
-            return View(owners);
+           // return View(owners);
         }
         [HttpGet]
         public IActionResult Create()

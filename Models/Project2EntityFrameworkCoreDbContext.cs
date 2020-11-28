@@ -13,6 +13,8 @@ namespace KurthProject2Vet.Models
             :base(options) { }
         DbSet<Owner> Owners { get; set; }
         DbSet<Pet> Pets { get; set; }
+        DbSet<Service> Services { get; set; }
+        DbSet<PetService> PetServices { get; set; }
 
         public void AddOwner(Owner owner)
         {
@@ -32,59 +34,38 @@ namespace KurthProject2Vet.Models
 
         public List<Owner> GetAllOwners()
         {
-            return Owners
-                .Include(owner => owner.Pets)
-                .ToList();
-            throw new NotImplementedException();
+            return Owners.ToList();
         }
 
         public List<Pet> GetAllPets()
         {
-                return Pets
-            .Include(pet => pet.Owner)
-                .ToList();
-            throw new NotImplementedException();
+            return Pets.ToList();
         }
 
-        public List<PetService> GetAllPetServices()
+        public List<Pet> GetAllPetServices()
         {
-            throw new NotImplementedException();
+            //return PetServices.ToList();
+            return Pets.Include(p => p.PetServices)
+                            .ThenInclude(ps => ps.Pet)
+                            .ToList();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Defining the composite key in the join entity
-            modelBuilder.Entity<PetService>)()
-                .HasKey(petService => new
-                {
-                    petService.PetId,
-                    petService.ServiceId
-                }
+            modelBuilder.Entity<PetService>().HasKey(petService => new {petService.PetId, petService.ServiceId});
 
             // Specify the foreign keys in the join entity
             modelBuilder.Entity<PetService>()
-                .HasOne(e => e.Section)
-                .WithMany(s => s.Enrollments)
-                .HasForeignKey(e => e.SectionId);
+                .HasOne(p => p.Pet)
+                .WithMany(ps => ps.PetServices)
+                .HasForeignKey(p => p.PetId);
 
             modelBuilder.Entity<PetService>()
-                .HasOne(e => e.Student)
-                .WithMany(student => student.Enrollments)
-                .HasForeignKey(e => e.StudentId);
-        }
+                .HasOne(e => e.Service)
+                .WithMany(s => s.PetServices)
+                .HasForeignKey(e => e.ServiceId);
+        }    
 
-       //ublic List<PetService> GetAllPetServices()
-        {
-            //Passes	the	Pet	objects	that	include	the	related	Services	to	the	
-            // PetServices View
-           // return Students.Include(student => student.Enrollments)
-                                // .ThenInclude(e => e.Section)
-                                 //.ToList();
-
-     //     return PetService.Include(petService => petService.Pet)
-     //         .ThenInclude(p => p.Names
-      //   .ToList();
-      //  throw new NotImplementedException();
-      // }
     }
 }

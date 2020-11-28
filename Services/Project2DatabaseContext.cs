@@ -98,19 +98,23 @@ namespace KurthProject2Vet.Database
 
             connection.Close();
             throw new NotImplementedException();
-            throw new NotImplementedException();
+           
         }
 
         public List<Pet> GetAllPets()
         {
-            return
+           
             throw new NotImplementedException();
         }
 
-        public List<PetService> GetAllPetServices()
+        public List<Pet> GetAllPetServices()
         {
             throw new NotImplementedException();
         }
 
+        List<Pet> IProject2Repository.GetAllPetServices()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
