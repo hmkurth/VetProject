@@ -8,7 +8,7 @@ namespace KurthProject2Vet.Models
     {
         void AddOwner(Owner owner);
         void AddPet(Pet pet);
-        List<Owner> GetAllOwners();
+        List<Owner> GetAllOwnersAsync();
         List<Pet> GetAllPets();
         List<Pet> GetAllPetServices();
         // MySqlConnection GetConnection();

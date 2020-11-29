@@ -31,8 +31,11 @@ namespace KurthProject2Vet.Models
 
         public List<Owner> GetAllOwners()
         {
-            return Owners.ToList();
+             return Owners.ToList();
+           
         }
+
+        
 
         public List<Pet> GetAllPets()
         {
@@ -63,6 +66,12 @@ namespace KurthProject2Vet.Models
                 .WithMany(s => s.PetServices)
                 .HasForeignKey(e => e.ServiceId);
         }
+
+        List<Owner> IProject2Repository.GetAllOwnersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         DbSet<Owner> Owners { get; set; }
         DbSet<Pet> Pets { get; set; }
         DbSet<Service> Services { get; set; }

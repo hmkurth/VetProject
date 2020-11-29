@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using KurthProject2Vet.Database;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,14 +24,15 @@ namespace KurthProject2Vet.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<Pet> pets = _repository.GetAllPets();
-
-            return View(pets);
+            VetViewModel viewModels = new VetViewModel();
+            viewModels.Pets = _repository.GetAllPets();
+            return View(viewModels);
+          
         }
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.AvailableOwners = _repository.GetAllOwners();
+            ViewBag.AvailableOwners = _repository.GetAllOwnersAsync();
             return View();
         }
         [HttpPost]

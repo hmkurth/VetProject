@@ -1,4 +1,5 @@
-﻿@model VetViewModel
+﻿@model KurthProject2Vet.ViewModels.VetViewModel
+
 @addTagHelper*,Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout";
@@ -10,7 +11,7 @@
 <a class="btn btn-large btn-success" asp-controller="Pets" asp-action="Create">Add a new pet</a>
 <div class="container">
     <div class="row">
-        @foreach (var pet in @Model)
+        @foreach (var pet in Model.Pets)
         {
             <div class="col-sm-3">@pet.Name </div>
         }

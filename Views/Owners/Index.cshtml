@@ -1,5 +1,7 @@
-﻿@model VetViewModel
+﻿
 @addTagHelper*,Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model KurthProject2Vet.ViewModels.VetViewModel
 @{
     Layout = "_Layout";
     ViewBag.Title = "Owner";
@@ -11,13 +13,17 @@ specifically	the	pet	name	and	type (see	image	below)
 <a class="btn btn-large btn-success" asp-controller="Owners" asp-action="Create">Add a new pet owner</a>
 <div class="container">
     <div class="row">
-        @foreach (var owner in @Model)
+        @foreach (var owner in @Model.Owners)
         {
             <p>@owner.LastName, @owner.FirstName</p>
-            <ul>
-                @foreach (var pet in owner.Pets)//nav property
+            <ul>  /*
+                //foreach statement can't operate on variables of type vetviewmodel 
+                //because it doea not contain a public instance for get enumerator'
+               // @foreach (var pet in owner.Pets)//nav property System.NullReferenceException: 'Object reference not set to an instance of an object.'
+
+                 //  KurthProject2Vet.Models.Owner.Pets.get returned null.
                 {
-                    <li>@pet.Owners.Name @pet.Type : @pet.Type</li>
+                    <li>@pet.Owner.FirstName @pet.Type : @pet.Type</li>
                 }
             </ul>
         }

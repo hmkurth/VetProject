@@ -21,7 +21,7 @@ namespace KurthProject2Vet.Database
             MySqlConnection mySqlConnection = new MySqlConnection(_connectionString);
             return mySqlConnection;
         }
-        public List<Owner> GetAllOwners()
+        public List<Owner> GetAllOwnersAsync()
         {
             List<Owner> owners = new List<Owner>();
 

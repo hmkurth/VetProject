@@ -18,9 +18,6 @@ namespace KurthProject2Vet.Models
         //Pets	it	the	navigation	property
         public IEnumerable<Pet> Pets { get; set; }
 
-        internal static void Add(Owner owner)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -18,7 +18,7 @@ namespace KurthProject2Vet.Models
         // Owner	is	the	navigation	property to	access	the	Owner	object	from	the	
          // Pet object
          [Required]
-        public string Owner { get; set; }
+        public Owner Owner { get; set; }
         [Required]
         public string Type { get; set; }
         //PetServices	is	the	navigation	property

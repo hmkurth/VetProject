@@ -1,4 +1,5 @@
 ﻿using KurthProject2Vet.Models;
+using KurthProject2Vet.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -16,11 +17,12 @@ namespace KurthProject2Vet.Controllers
             _repository = repository;
         }
         [HttpGet]
-      /*  public async Task<IActionResult> Index()
+       /*
+        public async Task<IActionResult> Index()
         {
-            //return View(await _context.Owner
-              //  .Include(owner => owner.Pets)
-              //  .ToListAsync());
+            return View(await _context.Owner
+                .Include(owner => owner.Pets)
+                .ToListAsync());
 
             List<Owner> owners = _repository.GetAllOwners();
             
@@ -29,9 +31,10 @@ namespace KurthProject2Vet.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            VetViewModels viewModels = new VetViewModels();
-            List<Owner> owners = _repository.GetAllOwners();
-            return View(owners);
+            VetViewModel viewModels = new VetViewModel();
+            viewModels.Owners = _repository.GetAllOwnersAsync();
+            viewModels.Pets = _repository.GetAllPets();
+            return View(viewModels);
         }
         [HttpGet]
         public IActionResult Create()
