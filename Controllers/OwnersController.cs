@@ -20,19 +20,12 @@ namespace KurthProject2Vet.Controllers
        /*
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Owner
-                .Include(owner => owner.Pets)
-                .ToListAsync());
-
-            List<Owner> owners = _repository.GetAllOwners();
-            
-            return View(owners);
         }  */
         [HttpGet]
         public IActionResult Index()
         {
             VetViewModel viewModels = new VetViewModel();
-            viewModels.Owners = _repository.GetAllOwnersAsync();
+            viewModels.Owners = _repository.GetAllOwners();
             viewModels.Pets = _repository.GetAllPets();
             return View(viewModels);
         }

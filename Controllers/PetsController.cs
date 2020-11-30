@@ -32,7 +32,7 @@ namespace KurthProject2Vet.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.AvailableOwners = _repository.GetAllOwnersAsync();
+            ViewBag.AvailableOwners = _repository.GetAllOwners();
             return View();
         }
         [HttpPost]
@@ -51,9 +51,16 @@ namespace KurthProject2Vet.Controllers
        // they have    used
         public IActionResult PetServices()
         {
-            List<Pet> petServices = _repository.GetAllPetServices();
+          /*  return Pets.Include(p => p.PetServices)
+                            .ThenInclude(ps => ps.Pet)
+                            .ToList();
+        */
 
-            return View(petServices);
+        VetViewModel viewModels = new VetViewModel();
+            viewModels.PetServices = _repository.GetAllPetServices();
+            return View(viewModels);
+
+            return View(viewModels);
         }
     }
 }

@@ -12,18 +12,17 @@ specifically	the	pet	name	and	type (see	image	below)
 <h3>Pet Owners </h3>
 <a class="btn btn-large btn-success" asp-controller="Owners" asp-action="Create">Add a new pet owner</a>
 <div class="container">
-    <div class="row">
+    
         @foreach (var owner in @Model.Owners)
         {
-            <p>@owner.LastName, @owner.FirstName</p>
-            <ul>  /*
-                //foreach statement can't operate on variables of type vetviewmodel 
-                //because it doea not contain a public instance for get enumerator'
-               // @foreach (var pet in owner.Pets)//nav property System.NullReferenceException: 'Object reference not set to an instance of an object.'
 
-                 //  KurthProject2Vet.Models.Owner.Pets.get returned null.
+            <p>Owner Name: @owner.LastName, @owner.FirstName</p><br/>
+            <ul>  
+                @foreach (var pet in owner.Pets)
+
+
                 {
-                    <li>@pet.Owner.FirstName @pet.Type : @pet.Type</li>
+                    <li>Type of pet: @pet.Type <br/> Name of pet: @pet.Name</li><br/>
                 }
             </ul>
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace KurthProject2Vet.Models
@@ -11,7 +11,9 @@ namespace KurthProject2Vet.Models
     {
         public Project2EntityFrameworkCoreDbContext(DbContextOptions<Project2EntityFrameworkCoreDbContext> options)
             :base(options) { }
-      
+
+        //trying to get the _context to populate
+        private Project2EntityFrameworkCoreDbContext _context;
 
         public void AddOwner(Owner owner)
         {
@@ -42,13 +44,7 @@ namespace KurthProject2Vet.Models
             return Pets.ToList();
         }
 
-        public List<Pet> GetAllPetServices()
-        {
-            //return PetServices.ToList();
-            return Pets.Include(p => p.PetServices)
-                            .ThenInclude(ps => ps.Pet)
-                            .ToList();
-        }
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -67,15 +63,20 @@ namespace KurthProject2Vet.Models
                 .HasForeignKey(e => e.ServiceId);
         }
 
-        List<Owner> IProject2Repository.GetAllOwnersAsync()
+        public List<PetService> GetAllPetServices()
         {
-            throw new NotImplementedException();
+            //return PetServices.ToList();
+            return Pets.Include(p => p.PetServices)
+                            .ThenInclude(ps => ps.Pet)
+                            .ToList();
         }
+
 
         DbSet<Owner> Owners { get; set; }
         DbSet<Pet> Pets { get; set; }
         DbSet<Service> Services { get; set; }
         DbSet<PetService> PetServices { get; set; }
+        public object Owner { get; private set; }
     }
 
 }

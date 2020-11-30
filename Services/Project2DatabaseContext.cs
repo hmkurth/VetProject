@@ -21,7 +21,7 @@ namespace KurthProject2Vet.Database
             MySqlConnection mySqlConnection = new MySqlConnection(_connectionString);
             return mySqlConnection;
         }
-        public List<Owner> GetAllOwnersAsync()
+        public List<Owner> GetAllOwners()
         {
             List<Owner> owners = new List<Owner>();
 
@@ -107,12 +107,12 @@ namespace KurthProject2Vet.Database
             throw new NotImplementedException();
         }
 
-        public List<Pet> GetAllPetServices()
+        public List<PetService> GetAllPetServices()
         {
             throw new NotImplementedException();
         }
 
-        List<Pet> IProject2Repository.GetAllPetServices()
+        List<PetService> IProject2Repository.GetAllPetServices()
         {
             throw new NotImplementedException();
         }
