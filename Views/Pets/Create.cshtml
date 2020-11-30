@@ -27,7 +27,7 @@
                 
                 <div class="form-group">
                     <label asp-for="Owner">Owner Name:</label>
-                    <select asp-for="Owner" class="form-control">
+                    <select asp-for="OwnerId" class="form-control">
                         <span asp-validation-for="Owner" class="text-danger"></span>
                         @foreach (var owner in ViewBag.AvailableOwners)
                         {

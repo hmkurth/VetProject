@@ -63,7 +63,7 @@ namespace KurthProject2Vet.Models
                 .HasForeignKey(e => e.ServiceId);
         }
 
-        public List<PetService> GetAllPetServices()
+        public List<Pet> GetAllPetServices()
         {
             //return PetServices.ToList();
             return Pets.Include(p => p.PetServices)

@@ -51,16 +51,12 @@ namespace KurthProject2Vet.Controllers
        // they have    used
         public IActionResult PetServices()
         {
-          /*  return Pets.Include(p => p.PetServices)
-                            .ThenInclude(ps => ps.Pet)
-                            .ToList();
-        */
-
+          
+   
         VetViewModel viewModels = new VetViewModel();
-            viewModels.PetServices = _repository.GetAllPetServices();
+            viewModels.Pets = _repository.GetAllPetServices();
             return View(viewModels);
 
-            return View(viewModels);
         }
     }
 }

@@ -107,12 +107,7 @@ namespace KurthProject2Vet.Database
             throw new NotImplementedException();
         }
 
-        public List<PetService> GetAllPetServices()
-        {
-            throw new NotImplementedException();
-        }
-
-        List<PetService> IProject2Repository.GetAllPetServices()
+        public List<Pet> GetAllPetServices()
         {
             throw new NotImplementedException();
         }

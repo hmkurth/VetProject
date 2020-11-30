@@ -12,7 +12,8 @@ namespace KurthProject2Vet.ViewModels
         public List<Owner> Owners { get; set; }
         public List<Pet> Pets { get; set; }
         public List<Service> Services { get; set; }
-        public List<PetService> PetServices { get; set; }
+
+        public List<Pet> PetServices { get; set; }
 
 
     }
