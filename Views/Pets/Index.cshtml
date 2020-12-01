@@ -13,7 +13,9 @@
     <div class="row">
         @foreach (var pet in Model.Pets)
         {
-            <div class="col-sm-3">@pet.Name </div>
+            <div class="col-3">
+        <li>Name of Pet: @pet.Name Birthdate: @pet.BirthDate  Type: @pet.Type</li>
+            </div>
         }
     </div>
 </div>
