@@ -4,14 +4,16 @@ using KurthProject2Vet.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KurthProject2Vet.Migrations
 {
     [DbContext(typeof(Project2EntityFrameworkCoreDbContext))]
-    partial class Project2EntityFrameworkCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201202020029_changenull")]
+    partial class changenull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

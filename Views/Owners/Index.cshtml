@@ -6,28 +6,40 @@
     Layout = "_Layout";
     ViewBag.Title = "Owner";
 }
-//The	owners	listing	should	show	a	list	of	Pets	that	each	owner	owns,
-specifically	the	pet	name	and	type (see	image	below)
+<div class="bg-primary panel-body" ">
+    <h2>Pet Owners</h2>
+</div>
 
-<h3>Pet Owners </h3>
 <a class="btn btn-large btn-success" asp-controller="Owners" asp-action="Create">Add a new pet owner</a>
 <div class="container">
     
         @foreach (var owner in @Model.Owners)
         {
+            <table class="table table-condensed table-bordered">
+                <tr>
 
-            <p>Owner Name: @owner.LastName, @owner.FirstName</p><br/>
-            <ul>  
-                @foreach (var pet in owner.Pets)
-
-
-                {
-                    <li>Type of pet: @pet.Type <br/> Name of pet: @pet.Name</li><br/>
-                }
-            </ul>
+                   <th>Owner Name</th>
+                   <th>Phone</th>
+                   <th>Pets</th>
+               </tr>
+         @foreach (var pet in owner.Pets)
+         {
+                <tr>
+                    <td>@owner.FirstName @owner.LastName </td>
+                    <td>@owner.PhoneNumber</td>
+         @if (owner.Pets != null)
+         {
+                    <td>@pet.Name, @pet.Type</td>
+         }
+         else
+         {
+              <td>No Pets Yet</td>
+         }
+            
+            </tr>
+         }
+       </table>
         }
-
-    </div>
 </div>
 
 

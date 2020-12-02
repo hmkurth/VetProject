@@ -1,7 +1,7 @@
 ﻿using KurthProject2Vet.Models;
 using KurthProject2Vet.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using KurthProject2Vet.Database;
+
 using System;
 using System.Collections.Generic;
 
@@ -35,15 +35,18 @@ namespace KurthProject2Vet.Controllers
             ViewBag.AvailableOwners = _repository.GetAllOwners();
             return View();
         }
+
         [HttpPost]
         public IActionResult Create(Pet pet)
         {
             if (ModelState.IsValid == true)
             {
                 //insert owner into dtabase
+
                 _repository.AddPet(pet);
                 return RedirectToAction("Index");
             }
+            ViewBag.AvailableOwners = _repository.GetAllOwners();
             return View(pet);
         }
         [HttpGet]

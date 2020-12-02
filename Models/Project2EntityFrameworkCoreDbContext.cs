@@ -26,7 +26,7 @@ namespace KurthProject2Vet.Models
         {
             Pets.Add(pet);
             SaveChanges();
-            throw new NotImplementedException();
+           
         }
 
 
@@ -67,7 +67,7 @@ namespace KurthProject2Vet.Models
         {
             //return PetServices.ToList();
             return Pets.Include(p => p.PetServices)
-                            .ThenInclude(ps => ps.Pet)
+                            .ThenInclude(ps => ps.Service)
                             .ToList();
         }
 

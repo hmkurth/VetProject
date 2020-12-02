@@ -7,41 +7,47 @@
 }
 
 
-<h3>Pet Services</h3>
+
 <div class="container">
+    <div class="bg-primary panel-body" ">
+        <h3>Pet Services</h3>
+        </div>
 
-    <div class="row">
-        @foreach (var pet in Model.Pets)
+    <table class="table table-condensed table-bordered">
+       
+            <tr>
+                <th>Pet Name</th>
+                <th>Service Description</th>
+                <th>Service Cost</th>
+                <th>Service Date</th>
 
-        {
-            <p>Name of Pet: @pet.Name</p>
-            @if (pet.PetServices.Count() == 0)
+
+            </tr>
+            @foreach (var pet in Model.Pets)
+
             {
-                <p>***No Services</p>
-            }
-            else
-            {
-                <ul>
+
+                @if (pet.PetServices.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="3" class=" ="text-center">No Services for @pet.Name</td>
+                    </tr>
+                }
+                else
+                {
+
                     @foreach (var petService in pet.PetServices)
                     {
+                        <tr>
+                            <td>@pet.Name</td>
+                            <td>@petService.Service.Description </td>
+                            <td> @petService.Service.Cost </td>
+                            <td>@petService.DateRendered </td>
 
-                        <li>Pet Service: @petService.Service.Description </li>//object refereance ot set to an instance of an object
-                        <li>Cost of Service: @petService.Service.Cost </li>
-                        <li>Date of Service: @petService.DateRendered </li>
-                        <li>Pet ServiceId: @petService.ServiceId</li>
-
+                        </tr>
                     }
-                </ul>
+
+                }
             }
-        }
-        </div>
-</div>
 
-
-
-. Retrieves	all	of	the	Pet	objects	from	the	database	and	includes
-the	Services	rendered	for	each	pet
-ii. This	will	require	utilizing	the	.Include()	and	.ThenInclude()
-syntax.	If	you	are	struggling	with	this,	please ask	me	for	help	J
-iii. Passes	the	Pet	objects	that	include	the	related	Services	to	the
-PetServices	View
+   </div>
